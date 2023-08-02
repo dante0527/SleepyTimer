@@ -15,7 +15,7 @@ window.configure(background="pink")
 window.grid_columnconfigure((0, 1), weight=1, uniform="equal")
 
 def sleep():
-    print(f"sudo shutdown {timer_type.get()} +{int(timer_delay.get())}")
+    os.system(f"sudo shutdown {timer_type.get()} +{int(timer_delay.get())}")
 
 
 # Timer length option
@@ -24,14 +24,14 @@ label_delay = Label(
     text="Set delay",
     fg="black",
     bg="pink")
-label_delay.grid(column=0, row=0, padx=5, pady=5)
+label_delay.grid(column=0, row=0, pady=(10, 5))
 
-minutes = [60, 45, 30, 15]
+minutes = [15, 30, 45, 60]
 timer_delay = IntVar()
-timer_delay.set(minutes[0])
+timer_delay.set(minutes[1])
 menu_delay = OptionMenu(window, timer_delay, minutes[0], *minutes[1:])
 menu_delay.config(fg="black", bg="pink", activeforeground="black")
-menu_delay.grid(column=0, row=1, padx=5, pady=5)
+menu_delay.grid(column=0, row=1)
 
 # Timer type option
 label_timer_type = Label(
@@ -39,7 +39,7 @@ label_timer_type = Label(
     text="When timer ends...",
     fg="black",
     bg="pink")
-label_timer_type.grid(column=1, row=0, columnspan=2)
+label_timer_type.grid(column=1, row=0, columnspan=2, pady=(10, 5))
 
 timer_type = StringVar()
 R_Sleep = Radiobutton(window, text="Sleep", var=timer_type, value="-s")
@@ -51,9 +51,9 @@ R_Sleep.config(fg="black", bg="pink")
 R_Shutdown.config(fg="black", bg="pink")
 R_Restart.config(fg="black", bg="pink")
 
-R_Sleep.grid(column=1, row=1, sticky=W, columnspan=2)
-R_Shutdown.grid(column=1, row=2, sticky=W, columnspan=2)
-R_Restart.grid(column=1, row=3, sticky=W, columnspan=2)
+R_Sleep.grid(column=1, row=1, sticky=NW, columnspan=2, padx=(30, 0))
+R_Shutdown.grid(column=1, row=2, sticky=NW, columnspan=2, padx=(30, 0))
+R_Restart.grid(column=1, row=3, sticky=NW, columnspan=2, padx=(30, 0))
 
 # Start timer button
 label_run = Label(
@@ -61,10 +61,11 @@ label_run = Label(
     foreground="black",
     background="pink"
 )
-label_run.grid(column=0, row=4, columnspan=2, padx=5, pady=(10,0))
+label_run.grid(column=0, row=4, columnspan=2, pady=(10, 5))
 
 button_run = Button(window, text="Go", command=sleep, highlightbackground="pink")
 button_run.grid(column=0, row=5, columnspan=2)
+
 
 if __name__ == "__main__":
     window.mainloop()
