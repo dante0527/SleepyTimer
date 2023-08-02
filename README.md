@@ -1,2 +1,2 @@
 # Sleepy
-MacOS Sleep timer made for my girlfriend who watches Netflix on her laptop before bed
+MacOS sleep timer made for my girlfriend who watches Netflix on her laptop before bed
