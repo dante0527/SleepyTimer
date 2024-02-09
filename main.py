@@ -1,5 +1,5 @@
 """
-Sleepy - sleep timer for my titi
+Sleepy - sleep timer for macOS
 Author: Dante Lee
 """
 
